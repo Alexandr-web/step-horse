@@ -1,0 +1,62 @@
+@import '../../node_modules/normalize.css/normalize';
+
+*::after,
+*::before,
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  resize: none;
+  outline: none;
+  text-decoration: none;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(45deg, #000, #1D232F);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  max-width: 1440px;
+  height: 100%;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  min-height: 500px;
+  &__rows {
+    width: 600px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      &-block {
+        width: 12.5%;
+        height: 80px;
+        box-shadow: inset 0 0 0 1px #1D232F;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+      }
+    }
+  }
+}
+
+.active-cell {
+  background: linear-gradient(to bottom, #37AE6F, #4EF59C, #37AE6F) !important
+}
