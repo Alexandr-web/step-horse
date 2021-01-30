@@ -16,17 +16,9 @@ const stepHorse = () => {
         block.dataset.y = i + 1;
 
         if ((i + 1) % 2 === 0) {
-          if (j % 2 === 0) {
-            block.style.background = 'linear-gradient(to bottom, #B58863, #B56C31, #B58863)';
-          } else {
-            block.style.background = 'linear-gradient(to bottom, #F0D9B5, #F0C98B, #F0D9B5)';
-          }
+          block.style.background = j % 2 === 0 ? 'linear-gradient(to bottom, #B58863, #B56C31, #B58863)' : 'linear-gradient(to bottom, #F0D9B5, #F0C98B, #F0D9B5)';
         } else {
-          if (j % 2 === 0) {
-            block.style.background = 'linear-gradient(to bottom, #F0D9B5, #F0C98B, #F0D9B5)';
-          } else {
-            block.style.background = 'linear-gradient(to bottom, #B58863, #B56C31, #B58863)';
-          }
+          block.style.background = j % 2 === 0 ? 'linear-gradient(to bottom, #F0D9B5, #F0C98B, #F0D9B5)' : 'linear-gradient(to bottom, #B58863, #B56C31, #B58863)';
         }
 
         rows[i].appendChild(block);
@@ -39,17 +31,6 @@ const stepHorse = () => {
   const choiceCell = () => {
     const cells = document.querySelectorAll('.wrapper__rows-item-block');
 
-    cells.forEach((cell, index) => {
-      cell.addEventListener('click', () => {
-        const x = parseInt(cell.dataset.x);
-        const y = parseInt(cell.dataset.y);
-
-        hideHorse();
-        showHorse(index);
-        checkStep(x, y);
-      });
-    });
-
     const showHorse = num => {
       const img = document.createElement('img');
       img.src = './images/horse-face-silhouette-right-side-view-variant.svg';
@@ -59,6 +40,23 @@ const stepHorse = () => {
     }
 
     const hideHorse = () => cells.forEach(cell => cell.innerHTML = '');
+
+    cells.forEach((cell, index) => {
+      cell.addEventListener('click', () => {
+        const x = parseInt(cell.dataset.x);
+        const y = parseInt(cell.dataset.y);
+
+        if (cell.classList.contains('active-cell')) {
+          hideHorse();
+          showHorse(index);
+          checkStep(x, y);
+        }
+      });
+
+      checkStep(1, 1);
+      hideHorse();
+      showHorse(0);
+    });
 
     function checkStep(x, y) {
       cells.forEach(cell => {
