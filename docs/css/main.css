@@ -430,3 +430,18 @@ img {
   background: -o-linear-gradient(top, #37AE6F, #4EF59C, #37AE6F) !important;
   background: linear-gradient(to bottom, #37AE6F, #4EF59C, #37AE6F) !important;
 }
+
+@media (max-width: 630px) {
+  .wrapper {
+    width: 100%;
+  }
+  .wrapper__rows {
+    width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  .wrapper__rows-item-block {
+    height: 60px;
+  }
+}
